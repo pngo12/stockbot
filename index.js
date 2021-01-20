@@ -3,23 +3,24 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const TOKEN = process.env.TOKEN;
 
+const iex = require("./iex/iex");
+const util = require("./util/index");
+
 bot.login(TOKEN);
 
-bot.on('ready', () => {
-  console.info(`Logged in as ${bot.user.tag}!`);
-});
+bot.on('message', async msg => {
+  if (msg.content[0].includes("$")) {
+    const ticker = util.prepString(msg.content);
+    const response = await tickerHandler(ticker);
+    msg.reply(`The Symbol you requested is: ${response.symbol}, Last price is ${response.latestPrice}`);
+  } else { // Error handling
 
-bot.on('message', msg => {
-  if (msg.content === 'ping') {
-    msg.reply('pong');
-    msg.channel.send('pong');
-
-  } else if (msg.content.startsWith('!kick')) {
-    if (msg.mentions.users.size) {
-      const taggedUser = msg.mentions.users.first();
-      msg.channel.send(`You wanted to kick: ${taggedUser.username}`);
-    } else {
-      msg.reply('Please tag a valid user!');
-    }
   }
 });
+
+const tickerHandler = async symbol => {
+  const getTickerInfo = await iex.getTickerInfo(symbol);
+  return getTickerInfo;
+};
+
+
