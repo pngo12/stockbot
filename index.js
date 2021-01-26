@@ -35,6 +35,10 @@ bot.on("message", async (msg) => {
     `
     );
   }
+
+  if (msg.content.includes("-joke")) {
+    msg.reply("Your portfolio.")
+  }
 });
 
 // Uncomment to pull quote in terminal
