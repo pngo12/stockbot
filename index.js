@@ -14,6 +14,7 @@ bot.on("message", async (msg) => {
     const response = await tickerHandler(ticker);
 
     const {
+      symbol,
       latestPrice,
       change,
       changePercent,
