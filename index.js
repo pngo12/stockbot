@@ -27,8 +27,8 @@ bot.on("message", async (msg) => {
       `
     ***${symbol}***
     Latest Price: ${latestPrice}
-    Change Amount: ${change}
-    Change Percent: ${changePercent * 100}
+    Change Amount: $${change}
+    Change Percent: ${parseFloat(changePercent).toFixed(2)}%
     52wk High: ${week52High}
     52wk Low: ${week52Low}
     After Hours Price: ${extendedPrice || "Not Available"}
