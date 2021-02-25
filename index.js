@@ -9,6 +9,7 @@ const cron = require("./cron/cron");
 bot.login(TOKEN);
 
 bot.on("message", async msg => {
+  cron.cronTest();
   if (msg.content[0].includes("$")) {
     const ticker = util.prepString(msg.content);
     const response = await util.tickerHandler(ticker);
@@ -30,7 +31,7 @@ bot.on("message", async msg => {
     ${companyName}
     Latest Price: ${latestPrice}
     Change Amount: $${change}
-    Change Percent: ${parseFloat((changePercent) * 100).toFixed(3)}%
+    Change Percent: ${parseFloat(changePercent * 100).toFixed(3)}%
     52wk High: ${week52High}
     52wk Low: ${week52Low}
     After Hours Price: ${extendedPrice || "Not Available"}
@@ -41,9 +42,8 @@ bot.on("message", async msg => {
   if (msg.content.includes("-joke")) {
     msg.reply("Your portfolio.");
   }
-
 });
 
 // cron.scheduleSPYSummaryOpen();
 // cron.scheduleSPYSummaryClose()
-cron.cronTest();
+// cron.cronTest();

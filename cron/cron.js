@@ -42,7 +42,7 @@ const scheduleSPYSummaryClose = async () => {
 };
 
 const cronTest = async () => {
-  cron.schedule("45 8 * * Monday-Friday", () => {
+  cron.schedule("48 8 * * Monday-Friday", () => {
     bot.channels.cache.get(process.env.CHANEL_ID).send("Sup guys");
   });
 };
