@@ -5,11 +5,11 @@ const cron = require("node-cron");
 // const TOKEN = process.env.TOKEN;
 // bot.login(TOKEN);
 
-const util = require("./util/index");
+const util = require("../util/index");
 
 
 const scheduleSPYSummaryOpen = async () => {
-  cron.schedule("30 6 * * Monday-Friday", () => {
+  cron.schedule("30 6 * * Monday-Friday", async () => {
     const response = await util.tickerHandler("$SPY");
     const { latestPrice, previousClose, ytdChange } = response;
 
@@ -25,7 +25,7 @@ const scheduleSPYSummaryOpen = async () => {
 };
 
 const scheduleSPYSummaryClose = async () => {
-  cron.schedule("0 13 * * Monday-Friday", () => {
+  cron.schedule("0 13 * * Monday-Friday", async () => {
       const response = await util.tickerHandler("$SPY");
       const { latestPrice, prevClose, ytdChange } = response;
 
@@ -41,13 +41,5 @@ const scheduleSPYSummaryClose = async () => {
   });
 };
 
-const cronTest = async () => {
-  cron.schedule("48 8 * * Monday-Friday", () => {
-    bot.channels.cache.get(process.env.CHANEL_ID).send("Sup guys");
-  });
-};
-
-
 exports.scheduleSPYSummaryOpen = scheduleSPYSummaryOpen;
 exports.scheduleSPYSummaryClose = scheduleSPYSummaryClose;
-exports.cronTest = cronTest;

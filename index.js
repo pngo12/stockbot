@@ -2,14 +2,14 @@ require("dotenv").config();
 const Discord = require("discord.js");
 const bot = new Discord.Client();
 const TOKEN = process.env.TOKEN;
+bot.login(TOKEN);
 
 const util = require("./util/index");
 const cron = require("./cron/cron");
 
-bot.login(TOKEN);
+
 
 bot.on("message", async msg => {
-  cron.cronTest();
   if (msg.content[0].includes("$")) {
     const ticker = util.prepString(msg.content);
     const response = await util.tickerHandler(ticker);
@@ -44,6 +44,7 @@ bot.on("message", async msg => {
   }
 });
 
-// cron.scheduleSPYSummaryOpen();
-// cron.scheduleSPYSummaryClose()
-// cron.cronTest();
+bot.on("ready", async () => {
+  cron.scheduleSPYSummaryOpen();
+  cron.scheduleSPYSummaryClose()
+});
