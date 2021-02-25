@@ -46,3 +46,4 @@ bot.on("message", async msg => {
 
 // cron.scheduleSPYSummaryOpen();
 // cron.scheduleSPYSummaryClose()
+cron.cronTest();
