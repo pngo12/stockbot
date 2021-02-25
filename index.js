@@ -21,11 +21,13 @@ bot.on("message", async msg => {
       week52High,
       week52Low,
       extendedPrice,
+      companyName,
     } = response;
 
     msg.reply(
       `
     ***${symbol}***
+    ${companyName}
     Latest Price: ${latestPrice}
     Change Amount: $${change}
     Change Percent: ${parseFloat((changePercent) * 100).toFixed(3)}%
@@ -42,5 +44,5 @@ bot.on("message", async msg => {
 
 });
 
-cron.scheduleSPYSummaryOpen();
-cron.scheduleSPYSummaryClose()
+// cron.scheduleSPYSummaryOpen();
+// cron.scheduleSPYSummaryClose()

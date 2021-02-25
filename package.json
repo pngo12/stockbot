@@ -9,7 +9,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.5.1",
+    "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "node-cron": "^2.0.3",
     "node-fetch": "^2.6.1"
