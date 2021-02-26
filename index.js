@@ -39,6 +39,14 @@ bot.on("message", async msg => {
     );
   }
 
+  if (msg.content.includes("-youtube")) {
+    const query = util.prepareYoutubeQueryString(msg.content);
+
+
+
+
+  }
+
   if (msg.content.includes("-joke")) {
     msg.reply("Your portfolio.");
   }
