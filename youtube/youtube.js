@@ -10,12 +10,12 @@ const youtube = google.youtube({
 
 
 
-const getYoutubeURL = async (query) => {
+const getYoutubeURL = async query => {
   let baseURL = "https://youtube.com/watch?v=";
 
   const callYouTube = await youtube.search.list({
     part: "id, snippet",
-    q: "cats",
+    q: query,
   });
 
 
