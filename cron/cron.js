@@ -15,11 +15,12 @@ const scheduleSPYSummaryOpen = async () => {
     const channel = await bot.channels.cache.get(process.env.CHANNEL_ID);
 
     channel.send(
-      ` GOOD MORNING BULLS
-        ***SPY***
-        Open: ${latestPrice}
-        Previous Close: ${previousClose}
-        YTD Change: ${parseFloat(ytdChange * 100).toFixed(3)}%
+      ` 
+      GOOD MORNING BULLS
+    ***SPY***
+    Open: ${latestPrice}
+    Previous Close: ${previousClose}
+    YTD Change: ${parseFloat(ytdChange * 100).toFixed(3)}%
       `
     );
   });
@@ -28,17 +29,18 @@ const scheduleSPYSummaryOpen = async () => {
 const scheduleSPYSummaryClose = async () => {
   cron.schedule("0 13 * * Monday-Friday", async () => {
       const response = await util.tickerHandler("SPY");
-      const { latestPrice, open, ytdChange } = response;
+      const { latestPrice, iexOpen, changePercent, ytdChange } = response;
 
       const channel = await bot.channels.cache.get(process.env.CHANNEL_ID);
 
       channel.send(
         `
           TRADING IS CLOSED FOR THE DAY
-          ***SPY***
-          Closing: ${latestPrice}
-          Open: ${open}
-          YTD Change: ${parseFloat(ytdChange * 100).toFixed(3)}%
+        ***SPY***
+        Closing: ${latestPrice}
+        Open: ${iexOpen}
+        Daily Change: ${parseFloat(changePercent * 100).toFixed(3)}%
+        YTD Change: ${parseFloat(ytdChange * 100).toFixed(3)}%
         `
       );
   });
