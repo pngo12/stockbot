@@ -1,4 +1,3 @@
-require("dotenv").config();
 const fetch = require("node-fetch");
 const APIToken = process.env.IEX_TOKEN;
 

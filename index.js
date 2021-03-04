@@ -40,10 +40,10 @@ bot.on("message", async msg => {
     );
   }
 
-  if (msg.content.includes("-youtube")) {
+  if (msg.content.toLowerCase().includes("-youtube")) {
     const query = util.prepareYoutubeQueryString(msg.content);
 
-    const youtubeURL = youtube.getYoutubeURL(query);
+    const youtubeURL = await youtube.getYoutubeURL(query);
 
     msg.reply(youtubeURL);
   }
