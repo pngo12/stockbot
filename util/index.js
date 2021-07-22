@@ -49,9 +49,9 @@ const randomHype = () => {
     "I Googled handsome and it was all images of you",
   ];
 
-  randomHype = randomHypeList[Math.floor(Math.random()*randomHypeList.length)];
+  randomHypeQuote = randomHypeList[Math.floor(Math.random()*randomHypeList.length)];
 
-  return randomHype;
+  return randomHypeQuote;
 }
 
 exports.prepString = prepString;
