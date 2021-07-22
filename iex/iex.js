@@ -1,26 +1,55 @@
 const fetch = require("node-fetch");
 const APIToken = process.env.IEX_TOKEN;
 
+const util = require("../util/index");
+
 const getTickerInfo = async ticker => {
   if (ticker.length > 0) {
     let response = await fetch(
       `https://cloud.iexapis.com/stable/stock/${ticker}/quote?token=${APIToken}`
     );
-    const isError = await Promise.resolve(handleErrors(response.ok));
-    if (isError) {
+
+    let quote = new util.quote();
+    const isError = await handleErrors(response.ok, quote);
+
+    if (!response.ok) {
       // Do something
     } else {
       let jsonResponse = await response.json();
-      return jsonResponse;
+      const {
+        symbol,
+        latestPrice,
+        change,
+        changePercent,
+        week52High,
+        week52Low,
+        latestVolume,
+        avgTotalVolume,
+        companyName,
+      } = jsonResponse;
+
+      let quote = new util.quote(
+        symbol,
+        latestPrice,
+        change,
+        changePercent,
+        week52High,
+        week52Low,
+        latestVolume,
+        avgTotalVolume,
+        companyName
+      );
+
+      return quote;
     }
   }
 };
 
-const handleErrors = async response => {
-  // ACTUALLY handle errors here
-  // vs truthy falsy returns
+const handleErrors = async (response, quote) => {
+
   if (!response) {
-    return true;
+    quote.isError = true;
+    quote.errorMessage = "Error processing your request, please try again"
   } else {
     return false;
   } 

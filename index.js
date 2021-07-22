@@ -40,7 +40,7 @@ bot.on("message", async msg => {
     );
   }
 
-  if (msg.content.toLowerCase().includes("-youtube")) {
+  if (msg.content.toLowerCase().startsWith("-youtube", 0)) {
     const query = util.prepareYoutubeQueryString(msg.content);
 
     const youtubeURL = await youtube.getYoutubeURL(query);
@@ -48,9 +48,15 @@ bot.on("message", async msg => {
     msg.reply(youtubeURL);
   }
 
-  if (msg.content.includes("-joke")) {
+  if (msg.content.startsWith("-joke", 0)) {
     msg.reply("Your portfolio.");
   }
+
+  if (msg.author.id === "328613818831863808") {
+    msg.react("❤️");
+    msg.reply(util.randomHype);
+  }
+
 });
 
 bot.on("ready", async () => {
