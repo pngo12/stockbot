@@ -10,7 +10,7 @@ const tickerHandler = async symbol => {
 };
 
 const prepareYoutubeQueryString = str => {
-  const queryString =  str.slice(9).replace(/ /g, "+");
+  const queryString = str.slice(9).replace(/ /g, "+");
   return queryString;
 }
 class quote {

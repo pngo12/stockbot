@@ -9,7 +9,7 @@ const getTickerInfo = async ticker => {
       `https://cloud.iexapis.com/stable/stock/${ticker}/quote?token=${APIToken}`
     );
 
-    let quote = new util.quote();
+    // let quote = new util.quote();
     const isError = await handleErrors(response.ok, quote);
 
     if (!response.ok) {
@@ -40,7 +40,7 @@ const getTickerInfo = async ticker => {
         companyName
       );
 
-      return quote;
+      return jsonResponse;
     }
   }
 };
