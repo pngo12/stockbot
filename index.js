@@ -52,7 +52,7 @@ bot.on("message", async msg => {
     msg.reply("Your portfolio.");
   }
 
-  if (msg.author.id === "774055857591025704") {
+  if (msg.author.id === "328613818831863808") {
     msg.react("❤️");
     msg.reply(util.randomHype());
   }
