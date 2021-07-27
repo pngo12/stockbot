@@ -58,7 +58,7 @@ bot.on("message", async msg => {
 
     const randomNumber = Math.floor(Math.random() * 100);
 
-    if (randomNumber <= 30) {
+    if (randomNumber <= 15) {
       msg.reply(util.randomHype());
     }
   }
