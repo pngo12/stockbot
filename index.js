@@ -65,6 +65,14 @@ bot.on("message", async msg => {
 
 });
 
+bot.on("guildMemberAdd", member => {
+  const channelID = member.guild.channels.cache.find(channel => channel.name === "general").id;
+  if(!channelID) return;
+
+  channel.send(`Welcome ${member.tag} to infinite losses`);
+    
+})
+
 bot.on("ready", async () => {
   cron.scheduleSPYSummaryOpen();
   cron.scheduleSPYSummaryClose()
