@@ -54,7 +54,13 @@ bot.on("message", async msg => {
 
   if (msg.author.id === "328613818831863808") {
     msg.react("❤️");
-    msg.reply(util.randomHype());
+    msg.react("💪");
+
+    const randomNumber = Math.floor(Math.random() * 100);
+
+    if (randomNumber <= 30) {
+      msg.reply(util.randomHype());
+    }
   }
 
 });
