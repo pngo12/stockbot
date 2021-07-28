@@ -58,8 +58,8 @@ bot.on("message", async msg => {
 
     if (randomNumber <= 15) {
       msg.reply(util.randomHype());
-          msg.react("❤️💪");
-          // msg.react("💪");
+      msg.react("❤️");
+      msg.react("💪");
     }
   }
 
