@@ -56,7 +56,7 @@ bot.on("message", async msg => {
 
     const randomNumber = Math.floor(Math.random() * 100);
 
-    if (randomNumber <= 5) {
+    if (randomNumber <= 2) {
       msg.reply(util.randomHype());
       msg.react("❤️");
       msg.react("💪");
